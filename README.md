@@ -11,3 +11,9 @@ print(r1.login())
 
 ```
 ```output:(True, 'We Have Loged in')```
+
+
+#Tested on 
+```
+HG8120C
+```
