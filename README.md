@@ -16,5 +16,8 @@ print(r1.login())
 #Tested on 
 ```
 HG8120C
+HG8321R
+EG8120L
+HS8125C
 SA1456C
 ```
