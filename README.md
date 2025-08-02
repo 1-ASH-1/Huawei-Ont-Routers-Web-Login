@@ -15,9 +15,15 @@ print(r1.login())
 
 #Tested on 
 ```
+XPON ONU
 HG8120C
+EG8120L
 HG8321R
+HG8340M	
+HG8145C
 EG8120L
 HS8125C
 SA1456C
 ```
+
+```contact me at t.me/ww0bb```
