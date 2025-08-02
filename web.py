@@ -43,7 +43,7 @@ class Router(object):
 			if self.is_port_open(self.ip,self.port)==True:
 				
 				self.set_token()
-				 
+				#print(self.data)
 				respone = self.session.post(f"{self.scheme}://{self.ip}:{self.port}/login.cgi",headers=self.headers,data=self.data,verify=False)
 				
 
@@ -62,9 +62,20 @@ class Router(object):
 
 	def set_token(self):
 
-		respone = self.session.get(f"{self.scheme}://{self.ip}:{self.port}",headers=self.headers,verify=False)
+		respone1 = self.session.get(f"{self.scheme}://{self.ip}:{self.port}",headers=self.headers,verify=False)
 		 
-		self.data['x.X_HW_Token']=respone.html.search("function GetRandCnt() { return '{}'; }")[0]
+
+
+		if "GetRandCnt()" not in respone1.html.html:
+			respone2 = self.session.get(f"{self.scheme}://{self.ip}:{self.port}/asp/GetRandCount.asp",headers=self.headers,verify=False)
+			if respone2.status_code != 200:
+				print("we cant get the csrf token dev it bro or contact me t.me/www0bb")
+
+			token = respone2.html.text.lstrip('\ufeff')
+		else:
+			token=respone1.html.search("function GetRandCnt() { return '{}'; }")[0]
+
+		self.data['x.X_HW_Token']=token
 
 	def is_port_open(self,host,port,timeout=2):
 	     
