@@ -45,7 +45,7 @@ class Router(object):
 				self.set_token()
 				#print(self.data)
 				respone = self.session.post(f"{self.scheme}://{self.ip}:{self.port}/login.cgi",headers=self.headers,data=self.data,verify=False)
-				
+				del self.headers['Cookie']
 
 				if "var pageName = 'index.asp';" in respone.html.html:
 					return True,"We Have Loged in"
@@ -111,3 +111,4 @@ class Router(object):
 	        return False
 
  
+
